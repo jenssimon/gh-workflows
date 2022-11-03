@@ -1,0 +1,46 @@
+name: Skip duplicate push and pull_request events
+
+on:
+  workflow_call:
+    outputs:
+      needs_run:
+        description: "Needs run"
+        value: ${{ jobs.skip_push_pr_duplicates.outputs.needs_run }}
+      needs_run_and_release:
+        description: "Needs run and release"
+        value: ${{ jobs.skip_push_pr_duplicates.outputs.needs_run_and_release }}
+
+jobs:
+  skip_push_pr_duplicates:
+    runs-on: ubuntu-latest
+    outputs:
+      needs_run: ${{ steps.needs_run.outputs.needs_run }}
+      needs_run_and_release: ${{ steps.needs_run_and_release.outputs.needs_run_and_release }}
+
+    steps:
+      - uses: 8BitJonny/gh-get-current-pr@v2.1.3
+        id: PR
+
+      - name: Provide needs_run
+        id: needs_run
+        run: >-
+          echo "needs_run=${{
+            (
+              github.event_name != 'pull_request'
+                && (
+                  steps.PR.outcome != 'success' || steps.PR.outputs.number == null
+                )
+            )
+            || github.event_name == 'pull_request'
+          }}" >> $GITHUB_OUTPUT
+
+      - name: Provide needs_run_and_release
+        id: needs_run_and_release
+        run: >-
+          echo "needs_run_and_release=${{
+            steps.needs_run.outputs.needs_run
+              || (
+                github.event_name == 'push'
+                  && contains('refs/heads/master refs/heads/main', github.ref)
+              )
+          }}" >> $GITHUB_OUTPUT

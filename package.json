@@ -1,0 +1,24 @@
+{
+  "name": "gh-workflows",
+  "license": "MIT",
+  "packageManager": "yarn@3.2.4",
+  "private": true,
+  "scripts": {
+    "commit": "cz",
+    "postinstall": "husky install",
+    "semantic-release": "semantic-release"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.2.0",
+    "@commitlint/config-conventional": "17.2.0",
+    "commitizen": "4.2.5",
+    "cz-conventional-changelog": "3.3.0",
+    "husky": "8.0.1",
+    "semantic-release": "19.0.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
