@@ -48,6 +48,6 @@ jobs:
             steps.needs_run.outputs.needs_run
               || (
                 github.event_name == 'push'
-                  && contains('refs/heads/master refs/heads/main', github.ref)
+                  && contains(fromJson('["refs/heads/master", "refs/heads/main"]', github.ref)
               )
           }}" >> $GITHUB_OUTPUT
