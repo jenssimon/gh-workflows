@@ -27,6 +27,7 @@ jobs:
           echo "ref: ${{ github.ref }}"
           echo "PR outcome: ${{ steps.PR.outcome }}"
           echo "PR number: ${{ steps.PR.outputs.number }}"
+          echo "ref check: ${{ contains(fromJson('["refs/heads/master", "refs/heads/main"]'), github.ref) }}"
 
       - name: Provide needs_run
         id: needs_run
