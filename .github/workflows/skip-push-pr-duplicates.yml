@@ -45,11 +45,4 @@ jobs:
 
       - name: Provide needs_run_and_release
         id: needs_run_and_release
-        run: >-
-          echo "needs_run_and_release=${{
-            steps.needs_run.outputs.needs_run
-              || (
-                github.event_name == 'push'
-                  && contains(fromJson('["refs/heads/master", "refs/heads/main"]'), github.ref)
-              )
-          }}" >> $GITHUB_OUTPUT
+        run: echo "needs_run_and_release=${{ steps.needs_run.outputs.needs_run || (github.event_name == 'push' && contains(fromJson('["refs/heads/master", "refs/heads/main"]'), github.ref)) }}" >> $GITHUB_OUTPUT
