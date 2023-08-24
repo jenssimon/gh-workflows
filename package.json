@@ -1,7 +1,7 @@
 {
   "name": "gh-workflows",
   "license": "MIT",
-  "packageManager": "yarn@3.6.2",
+  "packageManager": "yarn@3.6.3",
   "private": true,
   "scripts": {
     "commit": "cz",
@@ -14,7 +14,7 @@
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
     "husky": "8.0.3",
-    "semantic-release": "21.0.9"
+    "semantic-release": "21.1.0"
   },
   "config": {
     "commitizen": {
