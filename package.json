@@ -14,7 +14,7 @@
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
     "husky": "8.0.3",
-    "semantic-release": "22.0.5"
+    "semantic-release": "22.0.6"
   },
   "config": {
     "commitizen": {
