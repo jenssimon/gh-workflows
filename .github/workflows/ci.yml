@@ -7,36 +7,12 @@ on:
     branches: [ main ]
 
 jobs:
-  pre_job:
-    uses: ./.github/workflows/skip-push-pr-duplicates.yml
-
-  # build:
-  #   needs: pre_job
-  #   if: ${{ needs.pre_job.outputs.needs_run_and_release == 'true' }}
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - uses: actions/checkout@v3
-
-  #     - uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '18'
-  #         cache: 'yarn'
-
-  #     - name: Test
-  #       run: |
-  #         yarn
-
   release:
-    # needs: [build]
-    needs: pre_job
-    if: ${{ needs.pre_job.outputs.needs_run_and_release == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
           cache: 'yarn'
       - name: Release
         env:
