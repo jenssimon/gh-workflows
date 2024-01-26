@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "commit": "cz",
-    "postinstall": "husky install",
+    "postinstall": "husky",
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
