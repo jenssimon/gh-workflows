@@ -18,7 +18,7 @@ jobs:
       needs_run_and_release: ${{ steps.needs_run_and_release.outputs.needs_run_and_release }}
 
     steps:
-      - uses: 8BitJonny/gh-get-current-pr@3.0.0
+      - uses: 8BitJonny/gh-get-current-pr@4.0.0
         id: PR
 
       - name: Debug
