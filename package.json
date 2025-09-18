@@ -1,7 +1,7 @@
 {
   "name": "gh-workflows",
   "license": "MIT",
-  "packageManager": "yarn@4.9.4",
+  "packageManager": "yarn@4.10.1",
   "type": "module",
   "private": true,
   "scripts": {
